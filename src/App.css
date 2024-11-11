@@ -1,0 +1,803 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: white
+}
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Header CSS */
+.header {
+  background-color: transparent; /* Make the navbar background transparent */
+  color: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  box-shadow: none; /* Remove shadow, if desired */
+  padding: 1rem 0; /* Adjust padding for a sleek look */
+  transition: background-color 0.3s ease; /* Add a smooth transition for background color */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem; /* Matches the spaced-out look */
+  color: black;
+}
+
+.social-icons {
+  display: flex;
+  list-style: none;
+  gap: 1rem; /* Space between icons */
+}
+
+.icon {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: gray; /* Hover effect */
+}
+
+/* Container for the toggle button */
+.toggle-button-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 215px; /* Adjust based on the content */
+  padding: 5px;
+  background-color: #333;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid #333;
+}
+
+/* Inner switch styling */
+.toggle-switch {
+  background-color: white;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.toggle-button-container.toggled .toggle-switch {
+  transform: translateX(90px); /* Moves the switch to the right */
+  color: white;
+  background-color: #333; /* Keeps the background dark */
+}
+
+/* Additional text when toggled */
+.toggle-switch span {
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.toggle-button-container.toggled span {
+  color: white;
+  font-weight: bold;
+}
+
+/* Main layout for content and sidebar */
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sidebar styling */
+.scroll-sidebar {
+  position: fixed;
+  right: 0;
+  
+  margin-top: 240px;
+  padding-right: 20px;
+  flex: 0.5;
+  /*padding-left: 0.5rem; /* Adjust padding for spacing */
+  /*margin-right: 0.5rem; /* Add space between sidebar and content */
+}
+
+.scroll-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scroll-nav li {
+  margin-bottom: 1.5rem;
+}
+
+.scroll-nav a {
+  text-decoration: none;
+  color: #888;
+  font-size: 1.25rem;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.scroll-nav a span {
+  font-size: 0.9rem;
+  color: #bbb;
+  font-weight: 500;
+}
+
+.scroll-nav a.active {
+  color: #000;
+  background-color: #f0f0f0; /* Add a background for the active state */
+  border-radius: 15px;
+}
+
+.scroll-nav a.active span {
+  color: #000;
+}
+
+
+
+
+/* Main content area */
+.main-content {
+  flex: 5;
+  
+}
+
+
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  height: 100vh;
+  background-color: white;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 45%; /* Adjust to give more space to the image */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title,
+.hero-description {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-section.animate .hero-title {
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+.hero-section.animate .hero-description {
+  animation: fadeInUp 2.5s ease-in-out forwards;
+}
+
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #222;
+  margin-left: 10rem; /* Adjust this value to move the title to the right */
+  
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 550px;
+  margin-left: 10rem; /* Adjust this value to move the title to the right */
+  
+}
+
+
+
+
+
+.hero-image {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  top: 20px;
+  left: -80px;
+  display: flex;
+  justify-content: center; /* Horizontally center the image */
+}
+
+.hero-image img {
+  width: 38%; /* Ensure the image scales with the container */
+  height: auto; /* Maintain the aspect ratio */
+  
+}
+
+/* Media Queries for responsive behavior */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+
+/* Smooth transition for the image */
+.hero-image-img {
+  width: 40%; /* Adjust the initial size */
+  height: auto;
+  
+  
+}
+
+/* When playing, apply an animation or style */
+.hero-image-img.playing {
+  width: 90%; /* Increase size when playing */
+  
+  
+}
+
+
+
+/* Play/Pause button styling */
+.play-pause-button {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  
+  margin-left: 10rem;
+}
+
+.play-pause-button:hover {
+  background-color: #555;
+}
+
+/* Add animation to the text when playing */
+.play-text {
+  animation: textAnimation 0.8s ease-in-out forwards;
+}
+
+@keyframes textAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.animated-paragraph {
+  font-size: 1.2rem; /* Update this value to change font size */
+  color: #333;
+  margin-top: 1.5rem;
+  opacity: 1; /* Ensure it's visible */
+  line-height: 1.5;
+  max-width: 2000px; /* Maximum width */
+  margin-left: 150px; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding: 1rem; /* Add padding for spacing */
+  position: relative; /* Normal positioning */
+  z-index: 10; /* Bring to the front if needed */
+  text-align: left; /* Align text to the right */
+  font-family: 'Consolas', 'Courier New', monospace;/* Change to your desired font */
+  
+}
+
+
+
+
+
+
+/* Experience.css */
+.experience-section {
+  padding: 60px 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.experience-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.experience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.experience-card {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+}
+
+.experience-role {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.experience-company {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.experience-date {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #888;
+}
+
+.experience-techStack {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.experience-responsibilities {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 20px;
+  color: #666;
+}
+
+.responsibility-item {
+  margin-bottom: 10px;
+}
+
+
+.projects-section{
+  padding: 2rem;
+}
+
+
+
+
+
+
+/* Project section with a background image */
+#projects {
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Semi-transparent overlay for readability */
+#projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* Slight overlay for readability */
+  z-index: 1;
+}
+
+/* Ensuring the content inside the section is above the background */
+#projects h2, 
+#projects .project-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Project heading */
+#projects h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #080808;
+  margin-bottom: 2rem;
+}
+
+/* Project grid container */
+#projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive columns */
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px; /* Limit the grid width */
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Project card container */
+.project-card {
+  position: relative;
+  max-width: 320px;
+  height: 400px;
+  padding: 1.5rem;
+  margin: auto;
+  background-color: rgba(247, 241, 242, 0.8); /* Reduced opacity for blending */
+  color: rgb(7, 7, 7);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Hover effect: scale and slight rotation */
+.project-card:hover {
+  transform: scale(1.05) rotateY(3deg);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Reduce opacity of all other cards when hovering over a card */
+#projects:hover .project-card:not(:hover) {
+  opacity: 0.6;
+}
+
+/* Adding hover background effect using ::before */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+/* Text and content inside the card */
+.project-content {
+  position: relative;
+  text-align: left;
+}
+
+.project-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.project-content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Close button for iframe */
+#projects .iframe-close-btn {
+  position: absolute;
+  top: -5%;
+  right: -37%;
+  /*background-color: #e53e3e;*/
+  color: rgb(247, 17, 17);
+  border: none;
+  border-radius: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 3rem;
+  z-index: 1000;
+}
+
+.project-iframe-container {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-iframe {
+  width: 1300%; /* Increased width */
+  height: 130%; /* Increased height */
+  max-width: 1200px; /* Optional: limit max width for large screens */
+  max-height: 90vh; /* Optional: limit max height for tall screens */
+  border: none;
+  border-radius: 10px; /* Optional: adds rounded corners for a smoother look */
+}
+.project-content-wrapper.blurred {
+  filter: blur(8px); /* Adjust blur intensity as needed */
+  pointer-events: none; /* Prevent interaction with the blurred background */
+}
+.project-hover-iframe {
+  position: absolute;
+  
+  width: 1300%;
+  height: 120%;
+  max-width: 1200px; /* Optional: limit max width for large screens */
+  max-height: 90vh; /* Optional: limit max height for tall screens */
+  z-index: 10;
+  opacity: 0.4;
+  pointer-events: none;
+  border: none;
+  border-radius: 10px;
+}
+
+
+
+.project-tech-stack {
+  font-size: 0.875rem;
+  color: #080808;
+}
+
+.project-view-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  #projects .grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .project-card {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  #projects .project-card {
+    opacity: 1 !important; /* Ensure full visibility on smaller screens */
+  }
+}
+
+
+/* Skills section styling */
+#skills {
+  background-color: white;
+  background-size: cover; /* Ensure the image covers the whole section */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding: 4rem; /* Add more space around the bubbles */
+  overflow: hidden;
+  position: relative;
+  max-width: 100vw; /* Ensure it doesn't go outside viewport width */
+}
+
+/* Add subtle waves using pseudo-elements */
+#skills::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%);
+  animation: wave 10s infinite linear;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-20px) translateY(15px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Circular skill bubbles */
+#skills .bubble {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 150, 255, 0.2); /* Blur and shadow for floating effect */
+  position: relative;
+  background-size: cover; /* Ensure the image covers the whole bubble */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent repeating */
+}
+
+/* Example: Apply different images for each bubble */
+#skills .bubble.bg-blue-100 {
+  background-image: url('soap-bubble.png'); /* Replace with the actual image path */
+}
+
+#skills .bubble.bg-green-100 {
+  background-image: url('soap-bubble.png'); /* Replace with the actual image path */
+}
+
+#skills .bubble.bg-pink-100 {
+  background-image: url('soap-bubble.png'); /* Replace with the actual image path */
+}
+
+#skills .bubble.bg-yellow-100 {
+  background-image: url('soap-bubble.png'); /* Replace with the actual image path */
+}
+
+#skills .bubble.bg-purple-100 {
+  background-image: url('soap-bubble.png'); /* Replace with the actual image path */
+}
+
+/* Hover effect for ripple feel */
+#skills .bubble:hover {
+  transform: scale(1.2) rotate(5deg); /* Slight rotation for floating feel */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 30px rgba(0, 150, 255, 0.3); /* Stronger shadow for floating effect */
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Water ripple interaction */
+#skills .bubble:active {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 150, 255, 0.2);
+}
+
+/* Hover effect for a floating feel */
+#skills .bubble:hover {
+  transform: scale(1.15); /* Slightly larger on hover */
+  box-shadow: 0 10px 20px rgba(66, 52, 52, 0.2); /*  Stronger shadow for floating effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Contact.css */
+.contact-section {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details {
+  margin-top: 1rem;
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.contact-info {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-icon {
+  font-family: 'Poppins', sans-serif;
+  margin-right: 0.5rem;
+}
+
+.contact-link {
+  font-family: 'Poppins', sans-serif;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.contact-link:hover {
+  color: #005fa3;
+  font-family: 'Poppins', sans-serif;
+}
+
+.closing-line {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #777;
+}
+
+
+
+
+
+
+/* Footer styling */
+footer {
+  background-color: white; /* Set footer background to white */
+  color: black; /* Change text color to black or any dark color for contrast */
+  text-align: center;
+  padding: 1rem;
+  
+}
+
+footer a {
+  color: #333; /* Dark color for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #000; /* Change link color on hover */
+}
+
