@@ -8,7 +8,10 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-color: white
+  background-color: white;
+  
+  
+  
 }
 body::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
@@ -175,6 +178,11 @@ body::-webkit-scrollbar {
   padding: 4rem;
   height: 100vh;
   background-color: white;
+ /* background-image: url('pexels-evie-shaffer-1259279-2652346.jpg');*/
+  background-size: 60%; /* Resize image to 80% of the container's width */
+  background-position: right 60px bottom -150px; /* Move image position for exact alignment */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  
 }
 
 .hero-content {
@@ -209,7 +217,7 @@ body::-webkit-scrollbar {
 
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   color: #222;
@@ -218,7 +226,7 @@ body::-webkit-scrollbar {
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: 1.10rem;
   color: #666;
   margin-bottom: 2rem;
   max-width: 550px;
@@ -284,21 +292,22 @@ body::-webkit-scrollbar {
 
 /* Play/Pause button styling */
 .play-pause-button {
-  margin-top: 2rem;
   padding: 0.75rem 1.5rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 50px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 2px solid #ddd;
+  border-radius: 30px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  
-  margin-left: 10rem;
+  transition: all 0.3s ease;
 }
 
 .play-pause-button:hover {
-  background-color: #555;
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+  transform: scale(1.05);
 }
 
 /* Add animation to the text when playing */
@@ -319,7 +328,7 @@ body::-webkit-scrollbar {
 
 
 .animated-paragraph {
-  font-size: 1.2rem; /* Update this value to change font size */
+  font-size: 1rem; /* Update this value to change font size */
   color: #333;
   margin-top: 1.5rem;
   opacity: 1; /* Ensure it's visible */
@@ -778,6 +787,19 @@ body::-webkit-scrollbar {
 }
 
 
+.resume-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.pdf-viewer {
+  margin: 20px auto;
+  max-width: 650px;
+  height: 132vh;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
 
 
 

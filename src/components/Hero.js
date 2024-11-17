@@ -105,7 +105,7 @@ function Hero() {
           left: `${55 + Math.random() * 20}%`,
         });
 
-        const duration = targetWords.includes(currentWord) ? 1500 : 300;
+        const duration = targetWords.includes(currentWord) ? 1000 : 200;
 
         intervalRef.current = setTimeout(playNextWord, duration);
         currentIndex++;
@@ -201,16 +201,27 @@ function Hero() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 10px;
+          gap: 1rem; /* Spacing between rows */
+          margin-top: 2rem;
         }
 
         .button-row {
           display: flex;
-          gap: 2px;
+          gap: 1rem; /* Spacing between buttons */
+          justify-content: center;
         }
 
+        /* Special styling for the connect button */
         .connect-button {
-          margin-top: 5px;
+          background-color: #ffcc00;
+          color: #000;
+          font-size: 1rem;
+        }
+
+        .connect-button:hover {
+          background-color: #ffaa00;
+          color: #fff;
+          border-color: #ffaa00;
         }
 
         .play-pause-button {
@@ -247,6 +258,18 @@ function Hero() {
           50% { transform: scale(1.2); }
           100% { transform: scale(1); }
         }
+
+        /* Add spacing for mobile responsiveness */
+        @media (max-width: 768px) {
+          .button-container {
+            margin-top: 1.5rem;
+          }
+          .play-pause-button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+          }
+        }
+
       `}</style>
     </section>
   );
